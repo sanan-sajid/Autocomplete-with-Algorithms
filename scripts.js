@@ -15,6 +15,12 @@ async function fetchData() {
     const jsonData = await response.json();
     statesData = jsonData.states;
     console.log("Data loaded successfully:", statesData);
+    let cityCount = 0;
+    for (const state of statesData) {
+      cityCount += state.cities.length;
+    }
+    const cityCountElement = document.getElementById("city-count");
+    cityCountElement.textContent = `Total Cities/Data: ${cityCount}`;
   } catch (error) {
     console.error("Error fetching data:", error);
   }
